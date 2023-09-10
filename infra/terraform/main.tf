@@ -35,25 +35,13 @@ resource "aws_api_gateway_method" "mixfast_api_gateway_method" {
   }
 }
 
-resource "aws_api_gateway_integration" "mixfast_api_gateway_integration" {
-  rest_api_id             = aws_api_gateway_rest_api.mixfast_api_gateway.id
-  resource_id             = aws_api_gateway_resource.mixfast_api_gateway_resource.id
-  http_method             = aws_api_gateway_method.mixfast_api_gateway_method.http_method
-  integration_http_method = "ANY"
-  type                    = "HTTP_PROXY"
-  uri                     = "http://mixfast.com/{proxy}"
-
-  request_parameters =  {
-    "integration.request.path.proxy" = "method.request.path.proxy"
-  }
-}
-
 resource "aws_lambda_function" "mixfast_lambda_authorizer" {
-  function_name = "mixfast_lambda_authorizer"
-  runtime       = "nodejs18.x"
-  handler       = "index.mjs"
-  role          = "arn:aws:iam::022874923015:role/mixfast-lambda-role"
-  filename      = "mixfast_lambda.zip"
+  function_name    = "${var.name}_lambda_authorizer"
+  filename         = "mixfast_lambda.zip"
+  source_code_hash = filebase64sha256("mixfast_lambda.zip")
+  handler          = "index.handler"
+  role             = "arn:aws:iam::022874923015:role/mixfast-lambda-role"
+  runtime          = "nodejs18.x"
 
   vpc_config {
     subnet_ids         = var.subnet_ids
