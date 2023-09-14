@@ -48,9 +48,10 @@ resource "aws_api_gateway_integration" "mixfast_api_gateway_integration" {
   rest_api_id             = aws_api_gateway_rest_api.mixfast_api_gateway.id
   resource_id             = aws_api_gateway_resource.mixfast_api_gateway_resource.id
   http_method             = aws_api_gateway_method.mixfast_api_gateway_method.http_method
-  integration_http_method = "GET"
+  integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:pets/invocations"
+  credentials             = "arn:aws:iam::022874923015:role/mixfast_lambda_role"
 }
 
 resource "aws_api_gateway_method_response" "response_200" {
