@@ -53,6 +53,13 @@ resource "aws_api_gateway_integration" "mixfast_api_gateway_integration" {
   uri                     = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:pets/invocations"
 }
 
+resource "aws_api_gateway_method_response" "response_200" {
+  rest_api_id = aws_api_gateway_rest_api.mixfast_api_gateway.id
+  resource_id = aws_api_gateway_resource.mixfast_api_gateway_resource.id
+  http_method = aws_api_gateway_method.mixfast_api_gateway_method.http_method
+  status_code = "200"
+}
+
 resource "aws_api_gateway_deployment" "mixfast_api_gateway_deployment" {
   rest_api_id = aws_api_gateway_rest_api.mixfast_api_gateway.id
 
