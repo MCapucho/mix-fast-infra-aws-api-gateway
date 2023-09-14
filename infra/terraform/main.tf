@@ -50,7 +50,7 @@ resource "aws_api_gateway_integration" "integration" {
   http_method             = aws_api_gateway_method.mixfast_api_gateway_method.http_method
   integration_http_method = "ANY"
   type                    = "AWS_PROXY"
-  uri                     = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:mixfast_lambda_authorizer/invocations"
+  uri                     = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:pets/invocations"
 }
 
 resource "aws_api_gateway_deployment" "mixfast_api_gateway_deployment" {
