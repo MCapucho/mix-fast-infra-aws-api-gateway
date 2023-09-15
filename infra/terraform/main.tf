@@ -21,7 +21,7 @@ resource "aws_api_gateway_rest_api" "mixfast_api_gateway" {
 resource "aws_api_gateway_resource" "mixfast_api_gateway_resource" {
   rest_api_id = aws_api_gateway_rest_api.mixfast_api_gateway.id
   parent_id   = aws_api_gateway_rest_api.mixfast_api_gateway.root_resource_id
-  path_part   = "pets"
+  path_part   = "hostcheck"
 }
 
 resource "aws_api_gateway_authorizer" "mixfast_api_gateway_authorizer" {
@@ -44,14 +44,21 @@ resource "aws_api_gateway_method" "mixfast_api_gateway_method" {
   }
 }
 
-resource "aws_api_gateway_integration" "mixfast_api_gateway_integration" {
-  rest_api_id             = aws_api_gateway_rest_api.mixfast_api_gateway.id
-  resource_id             = aws_api_gateway_resource.mixfast_api_gateway_resource.id
-  http_method             = aws_api_gateway_method.mixfast_api_gateway_method.http_method
-  integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:pets/invocations"
-  credentials             = "arn:aws:iam::022874923015:role/mixfast_lambda_role"
+resource "aws_api_gateway_integration" "mixfast_api_gateway_integration_vpc_link" {
+  rest_api_id = aws_api_gateway_rest_api.mixfast_api_gateway.id
+  resource_id = aws_api_gateway_resource.mixfast_api_gateway_resource.id
+  http_method = aws_api_gateway_method.mixfast_api_gateway_method.http_method
+
+  request_templates = {
+    "application/json" = ""
+  }
+
+  type                    = "HTTP"
+  uri                     = "http://nlb-mixfast-22b359748fd34a2f.elb.us-east-2.amazonaws.com:9080/hostcheck"
+  integration_http_method = "GET"
+
+  connection_type = "VPC_LINK"
+  connection_id   = "wss4wt"
 }
 
 resource "aws_api_gateway_method_response" "response_200" {
@@ -68,7 +75,7 @@ resource "aws_api_gateway_deployment" "mixfast_api_gateway_deployment" {
     redeployment = sha1(jsonencode([
       aws_api_gateway_resource.mixfast_api_gateway_resource.id,
       aws_api_gateway_method.mixfast_api_gateway_method.id,
-      aws_api_gateway_integration.mixfast_api_gateway_integration.id,
+      aws_api_gateway_integration.mixfast_api_gateway_integration_vpc_link.id,
     ]))
   }
 
