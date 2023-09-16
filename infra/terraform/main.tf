@@ -15,13 +15,17 @@ resource "aws_api_gateway_rest_api" "mixfast_api_gateway" {
   name        = "${var.name}-api-gateway"
   description = "API Gateway do Mix Fast"
 
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+
   tags = var.tags
 }
 
 resource "aws_api_gateway_resource" "mixfast_api_gateway_resource" {
   rest_api_id = aws_api_gateway_rest_api.mixfast_api_gateway.id
   parent_id   = aws_api_gateway_rest_api.mixfast_api_gateway.root_resource_id
-  path_part   = "hostcheck"
+  path_part   = "{proxy+}"
 }
 
 resource "aws_api_gateway_authorizer" "mixfast_api_gateway_authorizer" {
@@ -35,7 +39,7 @@ resource "aws_api_gateway_authorizer" "mixfast_api_gateway_authorizer" {
 resource "aws_api_gateway_method" "mixfast_api_gateway_method" {
   rest_api_id   = aws_api_gateway_rest_api.mixfast_api_gateway.id
   resource_id   = aws_api_gateway_resource.mixfast_api_gateway_resource.id
-  http_method   = "GET"
+  http_method   = "ANY"
   authorization = "CUSTOM"
   authorizer_id = aws_api_gateway_authorizer.mixfast_api_gateway_authorizer.id
 
@@ -54,7 +58,7 @@ resource "aws_api_gateway_integration" "mixfast_api_gateway_integration_vpc_link
   }
 
   type                    = "HTTP"
-  uri                     = "http://nlb-mixfast-22b359748fd34a2f.elb.us-east-2.amazonaws.com:9080/hostcheck"
+  uri                     = "http://nlb-mixfast-22b359748fd34a2f.elb.us-east-2.amazonaws.com:9080/{proxy+}"
   integration_http_method = "GET"
 
   connection_type = "VPC_LINK"
