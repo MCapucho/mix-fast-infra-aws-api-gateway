@@ -11,9 +11,24 @@ provider "aws" {
   region = var.region
 }
 
+data "template_file" "mixfast_contrato_template" {
+  template = file("contrato.json")
+
+
+  vars = {
+    vpc_nlb     = "nlb-mixfast-22b359748fd34a2f.elb.us-east-2.amazonaws.com"
+    vpc_link    = "wss4wt"
+    port        = 9080
+    auth        = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:mixfast_lambda_authorizer/invocations"
+    credentials = "arn:aws:iam::022874923015:role/mixfast-lambda-role"
+  }
+
+}
+
 resource "aws_api_gateway_rest_api" "mixfast_api_gateway" {
   name        = "${var.name}-api-gateway"
   description = "API Gateway do Mix Fast"
+  body        = data.template_file.mixfast_contrato_template.rendered
 
   endpoint_configuration {
     types = ["REGIONAL"]
