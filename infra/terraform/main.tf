@@ -56,7 +56,7 @@ resource "aws_api_gateway_integration" "mixfast_api_gateway_integration_vpc_link
   http_method = aws_api_gateway_method.mixfast_api_gateway_method.http_method
 
   type                    = "HTTP"
-  uri                     = "http://mixfast-nlb-ebefb32cbfc58f9c.elb.us-east-2.amazonaws.com:9080/{proxy}"
+  uri                     = "http://mixfast-nlb-ebefb32cbfc58f9c.elb.us-east-2.amazonaws.com:9080/{id}"
   integration_http_method = "ANY"
   passthrough_behavior    = "WHEN_NO_MATCH"
 
