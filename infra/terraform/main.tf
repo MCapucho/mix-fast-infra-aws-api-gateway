@@ -1,21 +1,6 @@
-#data "template_file" "mixfast_contrato_template" {
-#  template = file("contrato.json")
-#
-#
-#  vars = {
-#    vpc_nlb     = "nlb-mixfast-22b359748fd34a2f.elb.us-east-2.amazonaws.com"
-#    vpc_link    = "sdnar3"
-#    port        = 9080
-#    auth        = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:mixfast_lambda_authorizer/invocations"
-#    credentials = "arn:aws:iam::022874923015:role/mixfast-lambda-role"
-#  }
-#
-#}
-
 resource "aws_api_gateway_rest_api" "mixfast_api_gateway" {
   name        = "${var.name}-api-gateway"
   description = "API Gateway do Mix Fast"
-#  body        = data.template_file.mixfast_contrato_template.rendered
 
   endpoint_configuration {
     types = ["REGIONAL"]
@@ -104,11 +89,11 @@ resource "aws_api_gateway_stage" "mixfast_api_gateway_stage" {
   stage_name    = "mixfast_dev"
 }
 
-resource "aws_api_gateway_account" "main" {
+resource "aws_api_gateway_account" "mixfast_api_gateway_account" {
   cloudwatch_role_arn = "arn:aws:iam::022874923015:role/mixfast_api_gateway_role"
 }
 
-resource "aws_api_gateway_method_settings" "mixfast_settings" {
+resource "aws_api_gateway_method_settings" "mixfast_api_gateway_settings" {
   rest_api_id = aws_api_gateway_rest_api.mixfast_api_gateway.id
   stage_name  = aws_api_gateway_stage.mixfast_api_gateway_stage.stage_name
   method_path = "*/*"
