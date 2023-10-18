@@ -103,3 +103,15 @@ resource "aws_api_gateway_stage" "mixfast_api_gateway_stage" {
   rest_api_id   = aws_api_gateway_rest_api.mixfast_api_gateway.id
   stage_name    = "mixfast_dev"
 }
+
+resource "aws_api_gateway_method_settings" "mixfast_settings" {
+  rest_api_id = aws_api_gateway_rest_api.mixfast_api_gateway.id
+  stage_name  = aws_api_gateway_stage.mixfast_api_gateway_stage.stage_name
+  method_path = "*/*"
+
+  settings {
+    logging_level = "INFO"
+    data_trace_enabled = true
+    metrics_enabled = true
+  }
+}
