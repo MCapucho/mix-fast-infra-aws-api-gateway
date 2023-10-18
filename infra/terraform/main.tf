@@ -1,34 +1,21 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = var.region
-}
-
-data "template_file" "mixfast_contrato_template" {
-  template = file("contrato.json")
-
-
-  vars = {
-    vpc_nlb     = "nlb-mixfast-22b359748fd34a2f.elb.us-east-2.amazonaws.com"
-    vpc_link    = "wss4wt"
-    port        = 9080
-    auth        = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:mixfast_lambda_authorizer/invocations"
-    credentials = "arn:aws:iam::022874923015:role/mixfast-lambda-role"
-  }
-
-}
+#data "template_file" "mixfast_contrato_template" {
+#  template = file("contrato.json")
+#
+#
+#  vars = {
+#    vpc_nlb     = "nlb-mixfast-22b359748fd34a2f.elb.us-east-2.amazonaws.com"
+#    vpc_link    = "sdnar3"
+#    port        = 9080
+#    auth        = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:mixfast_lambda_authorizer/invocations"
+#    credentials = "arn:aws:iam::022874923015:role/mixfast-lambda-role"
+#  }
+#
+#}
 
 resource "aws_api_gateway_rest_api" "mixfast_api_gateway" {
   name        = "${var.name}-api-gateway"
   description = "API Gateway do Mix Fast"
-  body        = data.template_file.mixfast_contrato_template.rendered
+#  body        = data.template_file.mixfast_contrato_template.rendered
 
   endpoint_configuration {
     types = ["REGIONAL"]
@@ -73,11 +60,11 @@ resource "aws_api_gateway_integration" "mixfast_api_gateway_integration_vpc_link
   }
 
   type                    = "HTTP"
-  uri                     = "http://nlb-mixfast-22b359748fd34a2f.elb.us-east-2.amazonaws.com:9080/{proxy+}"
+  uri                     = "http://mixfast-nlb-ebefb32cbfc58f9c.elb.us-east-2.amazonaws.com:9080/{proxy+}"
   integration_http_method = "GET"
 
   connection_type = "VPC_LINK"
-  connection_id   = "wss4wt"
+  connection_id   = "m2q2fd"
 }
 
 resource "aws_api_gateway_method_response" "mixfast_api_gateway_method_response" {
