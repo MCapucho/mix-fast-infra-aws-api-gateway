@@ -59,9 +59,10 @@ resource "aws_api_gateway_integration" "mixfast_api_gateway_integration_vpc_link
     "application/json" = ""
   }
 
-  type                    = "HTTP"
+  type                    = "HTTP_PROXY"
   uri                     = "http://mixfast-nlb-ebefb32cbfc58f9c.elb.us-east-2.amazonaws.com:9080/{proxy+}"
-  integration_http_method = "GET"
+  integration_http_method = "ANY"
+  passthrough_behavior    = "WHEN_NO_MATCH"
 
   connection_type = "VPC_LINK"
   connection_id   = "m2q2fd"
