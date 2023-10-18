@@ -66,6 +66,10 @@ resource "aws_api_gateway_integration" "mixfast_api_gateway_integration_vpc_link
 
   connection_type = "VPC_LINK"
   connection_id   = "m2q2fd"
+
+  request_parameters = {
+    "integration.request.path.id" = "method.request.path.proxy"
+  }
 }
 
 resource "aws_api_gateway_method_response" "mixfast_api_gateway_method_response" {
