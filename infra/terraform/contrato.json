@@ -50,7 +50,7 @@
     }
   },
   "securityDefinitions" : {
-    "mixfast_authorizer_proxy" : {
+    "mixfast_authorizer" : {
       "type" : "apiKey",
       "name" : "Authorization",
       "in" : "header",
