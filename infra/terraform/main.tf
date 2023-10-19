@@ -1,6 +1,7 @@
 resource "aws_api_gateway_rest_api" "mixfast_api_gateway" {
   name        = "${var.name}-api-gateway"
   description = "API Gateway do Mix Fast"
+#  body        = data.template_file.mixfast_contrato_template.rendered
 
   endpoint_configuration {
     types = ["REGIONAL"]
@@ -19,7 +20,7 @@ resource "aws_api_gateway_authorizer" "mixfast_api_gateway_authorizer" {
   name                   = "${var.name}_authorizer"
   rest_api_id            = aws_api_gateway_rest_api.mixfast_api_gateway.id
   authorizer_uri         = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:mixfast_lambda_authorizer/invocations"
-  authorizer_credentials = "arn:aws:iam::022874923015:role/mixfast_api_gateway_role"
+  authorizer_credentials = aws_iam_role.api_gateway_lambda_role.arn
   type                   = "TOKEN"
 }
 
@@ -86,11 +87,11 @@ resource "aws_api_gateway_deployment" "mixfast_api_gateway_deployment" {
 resource "aws_api_gateway_stage" "mixfast_api_gateway_stage" {
   deployment_id = aws_api_gateway_deployment.mixfast_api_gateway_deployment.id
   rest_api_id   = aws_api_gateway_rest_api.mixfast_api_gateway.id
-  stage_name    = "mixfast_dev"
+  stage_name    = var.name
 }
 
 resource "aws_api_gateway_account" "mixfast_api_gateway_account" {
-  cloudwatch_role_arn = "arn:aws:iam::022874923015:role/mixfast_api_gateway_role"
+  cloudwatch_role_arn = aws_iam_role.api_gateway_cloudwatch_role.arn
 }
 
 resource "aws_api_gateway_method_settings" "mixfast_api_gateway_settings" {
