@@ -132,7 +132,12 @@
         "type" : "apiKey",
         "name" : "Authorization",
         "in" : "header",
-        "x-amazon-apigateway-authtype" : "custom"
+        "x-amazon-apigateway-authtype" : "custom",
+        "x-amazon-apigateway-authorizer" : {
+          "type" : "token",
+          "authorizerUri" : "${auth}",
+          "authorizerCredentials" : "${credentials}"
+        }
       }
     }
   }
