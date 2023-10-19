@@ -5,7 +5,7 @@
     "version" : "1.0.0",
     "title" : "mixfast-api-gateway"
   },
-  "host" : "h28jlwqk88.execute-api.us-east-2.amazonaws.com",
+  "host" : "api_key.execute-api.us-east-2.amazonaws.com",
   "basePath" : "/mixfast",
   "schemes" : [ "https" ],
   "paths" : {
@@ -52,16 +52,7 @@
       },
       "post": {
         "operationId": "cadastrar",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/definitions/ProdutoHttp"
-              }
-            }
-          },
-          "required": true
-        },
+        "produces" : [ "application/json" ],
         "responses": {
           "201": {
             "description" : "201 response",
