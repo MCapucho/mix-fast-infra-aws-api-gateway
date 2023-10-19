@@ -1,7 +1,7 @@
 resource "aws_api_gateway_rest_api" "mixfast_api_gateway" {
   name        = "${var.name}-api-gateway"
   description = "API Gateway do Mix Fast"
-#  body        = data.template_file.mixfast_contrato_template.rendered
+  body        = data.template_file.mixfast_contrato_template.rendered
 
   endpoint_configuration {
     types = ["REGIONAL"]
