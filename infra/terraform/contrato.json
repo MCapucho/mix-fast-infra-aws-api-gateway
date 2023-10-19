@@ -39,7 +39,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "https://${vpc_nlb}:${port}/v1/produtos",
+          "uri": "http://${vpc_nlb}:${port}/v1/produtos",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -79,7 +79,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "POST",
-          "uri": "https://${vpc_nlb}:${port}/v1/produtos",
+          "uri": "http://${vpc_nlb}:${port}/v1/produtos",
           "responses" : {
             "default" : {
               "statusCode" : "201"
