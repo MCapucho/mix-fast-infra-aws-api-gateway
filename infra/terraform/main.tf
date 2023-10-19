@@ -105,4 +105,9 @@ resource "aws_api_gateway_method_settings" "mixfast_api_gateway_settings" {
     data_trace_enabled = true
     metrics_enabled = true
   }
+
+  depends_on = [
+    aws_api_gateway_stage.mixfast_api_gateway_stage
+    aws_api_gateway_account.mixfast_api_gateway_account
+  ]
 }
