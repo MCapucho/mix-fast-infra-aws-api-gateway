@@ -19,7 +19,7 @@ resource "aws_api_gateway_authorizer" "mixfast_api_gateway_authorizer" {
   name                   = "${var.name}_authorizer"
   rest_api_id            = aws_api_gateway_rest_api.mixfast_api_gateway.id
   authorizer_uri         = "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:022874923015:function:mixfast_lambda_authorizer/invocations"
-  authorizer_credentials = "arn:aws:iam::022874923015:role/mixfast-lambda-role"
+  authorizer_credentials = "arn:aws:iam::022874923015:role/mixfast_api_gateway_role"
   type                   = "TOKEN"
 }
 
