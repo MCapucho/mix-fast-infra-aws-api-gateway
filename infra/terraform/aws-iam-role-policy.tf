@@ -1,5 +1,5 @@
 resource "aws_iam_role" "api_gateway_cloudwatch_role" {
-  name = "${var.name}_api_gateway_role"
+  name = "${var.name}_api_gateway_cloudwatch_role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -43,7 +43,7 @@ data "aws_iam_policy_document" "invocation_policy" {
 }
 
 resource "aws_iam_role_policy" "api_gateway_lambda_policy" {
-  name   = "default"
+  name   = "${var.name}_api_gateway_lambda_policy"
   role   = aws_iam_role.api_gateway_lambda_role.id
   policy = data.aws_iam_policy_document.invocation_policy.json
 }
