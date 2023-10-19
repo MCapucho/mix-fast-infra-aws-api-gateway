@@ -49,6 +49,55 @@
           "connectionType" : "VPC_LINK",
           "type" : "http_proxy"
         }
+      },
+      "post": {
+        "operationId": "cadastrar",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/ProdutoHttp"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description" : "201 response",
+            "schema" : {
+              "$ref" : "#/definitions/ProdutoHttp"
+            }
+          },
+          "400": {
+            "description" : "400 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409": {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "POST",
+          "uri": "https://${vpc_nlb}:${port}/v1/produtos",
+          "responses" : {
+            "default" : {
+              "statusCode" : "201"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
       }
     }
   },
