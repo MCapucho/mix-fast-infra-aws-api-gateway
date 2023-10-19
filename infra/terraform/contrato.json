@@ -33,6 +33,9 @@
             }
           }
         },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
