@@ -7,11 +7,6 @@ on:
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  TF_WORKING_DIR: 'infra/terraform'
-  TF_CLOUD_ORGANIZATION: "mixfast"
-  TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
-  TF_WORKSPACE: "mixfast-github-actions"
-  CONFIG_DIRECTORY: "config"
 
 permissions:
   contents: read
@@ -19,8 +14,9 @@ permissions:
 jobs:
   terraform:
     name: 'Terraform'
-    if: github.repository != 'mixfast/mixfast-github-actions'
     runs-on: ubuntu-latest
+    env:
+      TF_WORKING_DIR: 'infra/terraform'
 
     defaults:
       run:
@@ -28,27 +24,20 @@ jobs:
         working-directory: ${{ env.TF_WORKING_DIR }}
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Upload Configuration
-      uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
-      id: apply-upload
-      with:
-        workspace: ${{ env.TF_WORKSPACE }}
-        directory: ${{ env.CONFIG_DIRECTORY }}
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
 
-    - name: Create Apply Run
-      uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
-      id: apply-run
-      with:
-        workspace: ${{ env.TF_WORKSPACE }}
-        configuration_version: ${{ steps.apply-upload.outputs.configuration_version_id }}
+      - name: Terraform Init
+        run: terraform init
 
-    - name: Apply
-      uses: hashicorp/tfc-workflows-github/actions/apply-run@v1.0.0
-      if: fromJSON(steps.apply-run.outputs.payload).data.attributes.actions.IsConfirmable
-      id: apply
-      with:
-        run: ${{ steps.apply-run.outputs.run_id }}
-        comment: "Apply Run from GitHub Actions CI ${{ github.sha }}"
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan -input=false
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false
