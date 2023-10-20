@@ -20,7 +20,7 @@ jobs:
       TF_CLOUD_ORGANIZATION: "mixfast"
       TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
       TF_WORKSPACE: "mixfast-github-actions"
-      CONFIG_DIRECTORY: "./"
+      CONFIG_DIRECTORY: "config"
 
     defaults:
       run:
