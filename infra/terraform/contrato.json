@@ -238,7 +238,6 @@
       "x-amazon-apigateway-authorizer" : {
         "authorizerUri" : "${auth}",
         "authorizerCredentials" : "${credentials}",
-        "authorizerResultTtlInSeconds" : 300,
         "type" : "token"
       }
     }
