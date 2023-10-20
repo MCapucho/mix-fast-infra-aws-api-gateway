@@ -184,8 +184,7 @@
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "example": "77b36beb-68cd-4939-9911-fe92a79cff99"
+            }
           }
         ],
         "responses": {
@@ -214,11 +213,14 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{codigo}",
+          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
             }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
           },
           "passthroughBehavior" : "when_no_match",
           "connectionType" : "VPC_LINK",
