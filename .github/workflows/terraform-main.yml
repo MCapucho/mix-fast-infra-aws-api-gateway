@@ -38,15 +38,6 @@ jobs:
         workspace: ${{ env.TF_WORKSPACE }}
         directory: ${{ env.CONFIG_DIRECTORY }}
 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-
-    - name: Terraform Init
-      run: terraform init
-
-    - name: Terraform Validate
-      run: terraform validate
-
     - name: Create Plan Run
       uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
       id: plan-run
