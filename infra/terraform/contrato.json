@@ -172,6 +172,59 @@
           "type" : "http_proxy"
         }
       }
+    },
+    "/v1/categorias/{codigo}": {
+      "get": {
+        "operationId": "buscarPorCodigo",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código da Categoria",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "77b36beb-68cd-4939-9911-fe92a79cff99"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfCategoriaHttp"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "GET",
+          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{codigo}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
     }
   },
   "securityDefinitions" : {
