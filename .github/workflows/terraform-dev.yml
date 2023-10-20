@@ -7,6 +7,10 @@ on:
     branches:
       - main
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 permissions:
   contents: read
   pull-requests: write
@@ -17,10 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_WORKING_DIR: 'infra/terraform'
-      TF_CLOUD_ORGANIZATION: "mixfast"
-      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
-      TF_WORKSPACE: "mixfast-github-actions"
-      CONFIG_DIRECTORY: "config"
 
     defaults:
       run:
@@ -28,30 +28,20 @@ jobs:
         working-directory: ${{ env.TF_WORKING_DIR }}
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Upload Configuration
-      uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
-      id: plan-upload
-      with:
-        workspace: ${{ env.TF_WORKSPACE }}
-        directory: ${{ env.CONFIG_DIRECTORY }}
-        speculative: true
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
 
-    - name: Create Plan Run
-      uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
-      id: plan-run
-      with:
-        workspace: ${{ env.TF_WORKSPACE }}
-        configuration_version: ${{ steps.plan-upload.outputs.configuration_version_id }}
-        plan_only: true
+      - name: Terraform Init
+        run: terraform init
 
-    - name: Get Plan Output
-      uses: hashicorp/tfc-workflows-github/actions/plan-output@v1.0.0
-      id: plan-output
-      with:
-        plan: ${{ fromJSON(steps.plan-run.outputs.payload).data.relationships.plan.data.id }}
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan -input=false
 
   create_pull_request:
     name: 'Open PR to Main'
@@ -60,13 +50,13 @@ jobs:
       - terraform
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Open PR to Develop
-      uses: repo-sync/pull-request@v2
-      with:
-        destination_branch: "main"
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        pr_label: "develop, automated pr"
-        pr_title: "[CI] Merge develop into main"
+      - name: Open PR to Develop
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "main"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_label: "develop, automated pr"
+          pr_title: "[CI] Merge develop into main"
