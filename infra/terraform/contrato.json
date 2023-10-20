@@ -90,6 +90,88 @@
           "type" : "http_proxy"
         }
       }
+    },
+    "/v1/categorias" : {
+      "get" : {
+        "operationId" : "buscarTodos",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfCategoriaHttp"
+            }
+          },
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "GET",
+          "uri": "http://${vpc_nlb}:${port}/v1/categorias",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      },
+      "post": {
+        "operationId": "cadastrar",
+        "produces" : [ "application/json" ],
+        "responses": {
+          "201": {
+            "description" : "201 response",
+            "schema" : {
+              "$ref" : "#/definitions/CategoriaHttp"
+            }
+          },
+          "400": {
+            "description" : "400 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409": {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "POST",
+          "uri": "http://${vpc_nlb}:${port}/v1/categorias",
+          "responses" : {
+            "default" : {
+              "statusCode" : "201"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
     }
   },
   "securityDefinitions" : {
