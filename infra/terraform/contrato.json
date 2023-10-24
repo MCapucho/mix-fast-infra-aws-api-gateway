@@ -1226,17 +1226,6 @@
     "/v1/pedidos/status": {
       "get": {
         "operationId": "buscarPorStatus",
-        "parameters": [
-          {
-            "name": "status",
-            "in": "query",
-            "description": "Status do Pedido",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description" : "200 response",
@@ -1268,9 +1257,6 @@
             "default" : {
               "statusCode" : "200"
             }
-          },
-          "requestParameters" : {
-            "integration.request.querystring.status" : "method.request.querystring.status"
           },
           "passthroughBehavior" : "when_no_match",
           "connectionType" : "VPC_LINK",
