@@ -1610,6 +1610,16 @@
         "type" : "token",
         "authorizer_result_ttl_in_seconds": "1"
       }
+    },
+    "mixfast_autorizador_cognito" : {
+      "type" : "apiKey",
+      "name" : "Authorization",
+      "in" : "header",
+      "x-amazon-apigateway-authtype" : "cognito_user_pools",
+      "x-amazon-apigateway-authorizer" : {
+        "providerARNs" : [ "${auth_cognito}" ],
+        "type" : "cognito_user_pools"
+      }
     }
   },
   "definitions" : {
