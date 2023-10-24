@@ -91,6 +91,222 @@
         }
       }
     },
+    "/v1/produtos/{codigo}": {
+      "get": {
+        "operationId": "buscarPorCodigo",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código do Produto",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/ProdutoHttp"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "GET",
+          "uri": "http://${vpc_nlb}:${port}/v1/produtos/{id}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      },
+      "put": {
+        "operationId": "atualizar",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código do Produto",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/ProdutoHttp"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "PUT",
+          "uri": "http://${vpc_nlb}:${port}/v1/produtos/{id}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      },
+      "delete": {
+        "operationId": "deletarPorCodigo",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código do Produto",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "DELETE",
+          "uri": "http://${vpc_nlb}:${port}/v1/produtos/{id}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "204"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/v1/produtos/categoria/{categoriaCodigo}": {
+      "get": {
+        "operationId": "buscarPorCategoria",
+        "parameters": [
+          {
+            "name": "categoriaCodigo",
+            "in": "path",
+            "description": "Código da Categoria",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfProdutoHttp"
+            }
+          },
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "GET",
+          "uri": "http://${vpc_nlb}:${port}/v1/produtos/categoria/{id}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.categoriaCodigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
     "/v1/categorias" : {
       "get" : {
         "operationId" : "buscarTodos",
