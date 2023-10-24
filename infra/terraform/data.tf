@@ -1,5 +1,5 @@
 data "template_file" "mixfast_contrato_template" {
-  template = file("./../contrato/contrato.json")
+  template = file("./../../contrato/contrato.json")
 
   vars = {
     vpc_nlb     = "mixfast-nlb-aa37518e8412fa4f.elb.us-east-1.amazonaws.com"
