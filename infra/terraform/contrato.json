@@ -9,6 +9,490 @@
   "basePath" : "/mixfast",
   "schemes" : [ "https" ],
   "paths" : {
+    "/v1/categorias" : {
+      "get" : {
+        "operationId" : "buscarTodos",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfCategoriaHttp"
+            }
+          },
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "GET",
+          "uri": "http://${vpc_nlb}:${port}/v1/categorias",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      },
+      "post": {
+        "operationId": "cadastrar",
+        "produces" : [ "application/json" ],
+        "responses": {
+          "201": {
+            "description" : "201 response",
+            "schema" : {
+              "$ref" : "#/definitions/CategoriaHttp"
+            }
+          },
+          "400": {
+            "description" : "400 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409": {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "POST",
+          "uri": "http://${vpc_nlb}:${port}/v1/categorias",
+          "responses" : {
+            "default" : {
+              "statusCode" : "201"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/v1/categorias/{codigo}": {
+      "get": {
+        "operationId": "buscarPorCodigo",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código da Categoria",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/CategoriaHttp"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "GET",
+          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{id}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      },
+      "put": {
+        "operationId": "atualizar",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código da Categoria",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/CategoriaHttp"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "PUT",
+          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{id}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      },
+      "delete": {
+        "operationId": "deletarPorCodigo",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código da Categoria",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "DELETE",
+          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{id}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "204"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/v1/formas_pagamento": {
+      "get": {
+        "operationId": "buscarTodas",
+        "responses": {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfFormaPagamentoHttp"
+            }
+          },
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "GET",
+          "uri": "http://${vpc_nlb}:${port}/v1/formas_pagamento",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      },
+      "post": {
+        "operationId": "cadastrar",
+        "responses": {
+          "201": {
+            "description" : "201 response",
+            "schema" : {
+              "$ref" : "#/definitions/FormaPagamentoHttp"
+            }
+          },
+          "400": {
+            "description" : "400 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409": {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "POST",
+          "uri": "http://${vpc_nlb}:${port}/v1/formas_pagamento",
+          "responses" : {
+            "default" : {
+              "statusCode" : "201"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/v1/formas_pagamento/{codigo}": {
+      "get": {
+        "operationId": "buscarPorCodigo",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código da Forma de Pagamento",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/FormaPagamentoHttp"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "GET",
+          "uri": "http://${vpc_nlb}:${port}/v1/formas_pagamento/{id}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      },
+      "put": {
+        "operationId": "atualizar_1",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código da Forma de Pagamento",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/FormaPagamentoHttp"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "PUT",
+          "uri": "http://${vpc_nlb}:${port}/v1/formas_pagamento/{id}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      },
+      "delete": {
+        "operationId": "deletarPorCodigo_1",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código da Forma de Pagamento",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "DELETE",
+          "uri": "http://${vpc_nlb}:${port}/v1/formas_pagamento/{id}",
+          "responses" : {
+            "default" : {
+              "statusCode" : "204"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
     "/v1/produtos" : {
       "get" : {
         "operationId" : "buscarTodos",
@@ -306,249 +790,6 @@
           "type" : "http_proxy"
         }
       }
-    },
-    "/v1/categorias" : {
-      "get" : {
-        "operationId" : "buscarTodos",
-        "produces" : [ "application/json" ],
-        "responses" : {
-          "200" : {
-            "description" : "200 response",
-            "schema" : {
-              "$ref" : "#/definitions/ArrayOfCategoriaHttp"
-            }
-          },
-          "204" : {
-            "description" : "204 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "409" : {
-            "description" : "409 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "security" : [ {
-          "mixfast_authorizer" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "connectionId": "${vpc_link}",
-          "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias",
-          "responses" : {
-            "default" : {
-              "statusCode" : "200"
-            }
-          },
-          "passthroughBehavior" : "when_no_match",
-          "connectionType" : "VPC_LINK",
-          "type" : "http_proxy"
-        }
-      },
-      "post": {
-        "operationId": "cadastrar",
-        "produces" : [ "application/json" ],
-        "responses": {
-          "201": {
-            "description" : "201 response",
-            "schema" : {
-              "$ref" : "#/definitions/CategoriaHttp"
-            }
-          },
-          "400": {
-            "description" : "400 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "409": {
-            "description" : "409 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "security" : [ {
-          "mixfast_authorizer" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "connectionId": "${vpc_link}",
-          "httpMethod" : "POST",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias",
-          "responses" : {
-            "default" : {
-              "statusCode" : "201"
-            }
-          },
-          "passthroughBehavior" : "when_no_match",
-          "connectionType" : "VPC_LINK",
-          "type" : "http_proxy"
-        }
-      }
-    },
-    "/v1/categorias/{codigo}": {
-      "get": {
-        "operationId": "buscarPorCodigo",
-        "parameters": [
-          {
-            "name": "codigo",
-            "in": "path",
-            "description": "Código da Categoria",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200" : {
-            "description" : "200 response",
-            "schema" : {
-              "$ref" : "#/definitions/CategoriaHttp"
-            }
-          },
-          "404" : {
-            "description" : "404 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "409" : {
-            "description" : "409 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "security" : [ {
-          "mixfast_authorizer" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "connectionId": "${vpc_link}",
-          "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{id}",
-          "responses" : {
-            "default" : {
-              "statusCode" : "200"
-            }
-          },
-          "requestParameters" : {
-            "integration.request.path.id" : "method.request.path.codigo"
-          },
-          "passthroughBehavior" : "when_no_match",
-          "connectionType" : "VPC_LINK",
-          "type" : "http_proxy"
-        }
-      },
-      "put": {
-        "operationId": "atualizar",
-        "parameters": [
-          {
-            "name": "codigo",
-            "in": "path",
-            "description": "Código da Categoria",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200" : {
-            "description" : "200 response",
-            "schema" : {
-              "$ref" : "#/definitions/CategoriaHttp"
-            }
-          },
-          "404" : {
-            "description" : "404 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "409" : {
-            "description" : "409 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "security" : [ {
-          "mixfast_authorizer" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "connectionId": "${vpc_link}",
-          "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{id}",
-          "responses" : {
-            "default" : {
-              "statusCode" : "200"
-            }
-          },
-          "requestParameters" : {
-            "integration.request.path.id" : "method.request.path.codigo"
-          },
-          "passthroughBehavior" : "when_no_match",
-          "connectionType" : "VPC_LINK",
-          "type" : "http_proxy"
-        }
-      },
-      "delete": {
-        "operationId": "deletarPorCodigo",
-        "parameters": [
-          {
-            "name": "codigo",
-            "in": "path",
-            "description": "Código da Categoria",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204" : {
-            "description" : "204 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "404" : {
-            "description" : "404 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "409" : {
-            "description" : "409 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "security" : [ {
-          "mixfast_authorizer" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "connectionId": "${vpc_link}",
-          "httpMethod" : "DELETE",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{id}",
-          "responses" : {
-            "default" : {
-              "statusCode" : "204"
-            }
-          },
-          "requestParameters" : {
-            "integration.request.path.id" : "method.request.path.codigo"
-          },
-          "passthroughBehavior" : "when_no_match",
-          "connectionType" : "VPC_LINK",
-          "type" : "http_proxy"
-        }
-      }
     }
   },
   "securityDefinitions" : {
@@ -560,7 +801,8 @@
       "x-amazon-apigateway-authorizer" : {
         "authorizerUri" : "${auth}",
         "authorizerCredentials" : "${credentials}",
-        "type" : "token"
+        "type" : "token",
+        "authorizer_result_ttl_in_seconds": "0"
       }
     }
   },
@@ -569,6 +811,12 @@
       "type" : "array",
       "items" : {
         "$ref" : "#/definitions/CategoriaHttp"
+      }
+    },
+    "ArrayOfFormaPagamentoHttp" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/FormaPagamentoHttp"
       }
     },
     "ArrayOfProdutoHttp" : {
@@ -586,6 +834,20 @@
         },
         "nome" : {
           "type" : "string"
+        }
+      }
+    },
+    "FormaPagamentoHttp": {
+      "required": [
+        "descricao"
+      ],
+      "type": "object",
+      "properties": {
+        "codigo": {
+          "type": "string"
+        },
+        "descricao": {
+          "type": "string"
         }
       }
     },
