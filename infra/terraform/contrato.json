@@ -1223,6 +1223,61 @@
         }
       }
     },
+    "/v1/pedidos/status": {
+      "get": {
+        "operationId": "buscarPorStatus",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Status do Pedido",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/PedidoHttp"
+            }
+          },
+          "204": {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409": {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_authorizer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "POST",
+          "uri": "http://${vpc_nlb}:${port}/v1/pedidos/status",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.querystring.status" : "method.request.querystring.status"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
     "/v1/produtos" : {
       "get" : {
         "operationId" : "buscarTodos",
