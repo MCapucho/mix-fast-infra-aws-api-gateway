@@ -1608,7 +1608,7 @@
         "authorizerUri" : "${auth}",
         "authorizerCredentials" : "${credentials}",
         "type" : "token",
-        "authorizer_result_ttl_in_seconds": "0"
+        "authorizer_result_ttl_in_seconds": "1"
       }
     }
   },
