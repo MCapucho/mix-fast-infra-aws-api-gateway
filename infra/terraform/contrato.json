@@ -1262,7 +1262,7 @@
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
-          "httpMethod" : "POST",
+          "httpMethod" : "GET",
           "uri": "http://${vpc_nlb}:${port}/v1/pedidos/status",
           "responses" : {
             "default" : {
