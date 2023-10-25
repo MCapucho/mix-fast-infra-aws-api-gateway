@@ -34,7 +34,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -74,7 +74,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -126,7 +126,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -179,7 +179,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -232,7 +232,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -276,7 +276,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -315,7 +315,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -367,7 +367,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -420,7 +420,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -473,7 +473,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -528,7 +528,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -572,7 +572,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -611,7 +611,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -663,7 +663,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -716,7 +716,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -769,7 +769,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -813,7 +813,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -852,7 +852,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -904,7 +904,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -965,7 +965,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1026,7 +1026,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1087,7 +1087,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1148,7 +1148,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1203,7 +1203,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1247,7 +1247,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1289,7 +1289,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1329,7 +1329,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1381,7 +1381,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1434,7 +1434,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1487,7 +1487,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1542,7 +1542,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
@@ -1580,7 +1580,7 @@
           }
         },
         "security" : [ {
-          "mixfast_authorizer" : [ ]
+          "mixfast_autorizador_cognito" : [ ]
         } ],
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
