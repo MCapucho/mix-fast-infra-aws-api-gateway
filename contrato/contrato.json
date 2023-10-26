@@ -1599,18 +1599,6 @@
     }
   },
   "securityDefinitions" : {
-    "mixfast_authorizer" : {
-      "type" : "apiKey",
-      "name" : "Authorization",
-      "in" : "header",
-      "x-amazon-apigateway-authtype" : "custom",
-      "x-amazon-apigateway-authorizer" : {
-        "authorizerUri" : "${auth}",
-        "authorizerCredentials" : "${credentials}",
-        "type" : "token",
-        "authorizer_result_ttl_in_seconds": "1"
-      }
-    },
     "mixfast_autorizador_cognito" : {
       "type" : "apiKey",
       "name" : "Authorization",
