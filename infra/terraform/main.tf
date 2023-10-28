@@ -43,12 +43,12 @@ resource "aws_api_gateway_integration" "mixfast_api_gateway_integration_vpc_link
   http_method = aws_api_gateway_method.mixfast_api_gateway_method.http_method
 
   type                    = "HTTP_PROXY"
-  uri                     = "http://mixfast-nlb-aa37518e8412fa4f.elb.us-east-1.amazonaws.com:9080/{id}"
+  uri                     = "http://mixfast-nlb-ad1e0c8436c96791.elb.us-east-1.amazonaws.com:9080/{id}"
   integration_http_method = "ANY"
   passthrough_behavior    = "WHEN_NO_MATCH"
 
   connection_type = "VPC_LINK"
-  connection_id   = "1twc76"
+  connection_id   = "gglmop"
 
   request_parameters = {
     "integration.request.path.id" = "method.request.path.proxy"
