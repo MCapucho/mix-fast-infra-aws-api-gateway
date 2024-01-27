@@ -39,7 +39,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/categorias",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -79,7 +79,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "POST",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/categorias",
           "responses" : {
             "default" : {
               "statusCode" : "201"
@@ -131,7 +131,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/categorias/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -184,7 +184,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/categorias/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -237,7 +237,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "DELETE",
-          "uri": "http://${vpc_nlb}:${port}/v1/categorias/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/categorias/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "204"
@@ -281,7 +281,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/clientes",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/clientes",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -320,7 +320,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "POST",
-          "uri": "http://${vpc_nlb}:${port}/v1/clientes",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/clientes",
           "responses" : {
             "default" : {
               "statusCode" : "201"
@@ -372,7 +372,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/clientes/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/clientes/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -425,7 +425,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port}/v1/clientes/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/clientes/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -478,7 +478,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "DELETE",
-          "uri": "http://${vpc_nlb}:${port}/v1/clientes/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/clientes/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "204"
@@ -533,7 +533,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/clientes/cpf/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/clientes/cpf/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -577,7 +577,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/formas_pagamento",
+          "uri": "http://${vpc_nlb}:${port_mixfast_pagamento}/v1/formas_pagamento",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -616,7 +616,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "POST",
-          "uri": "http://${vpc_nlb}:${port}/v1/formas_pagamento",
+          "uri": "http://${vpc_nlb}:${port_mixfast_pagamento}/v1/formas_pagamento",
           "responses" : {
             "default" : {
               "statusCode" : "201"
@@ -668,7 +668,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/formas_pagamento/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast_pagamento}/v1/formas_pagamento/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -721,7 +721,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port}/v1/formas_pagamento/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast_pagamento}/v1/formas_pagamento/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -774,7 +774,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "DELETE",
-          "uri": "http://${vpc_nlb}:${port}/v1/formas_pagamento/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast_pagamento}/v1/formas_pagamento/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "204"
@@ -782,6 +782,44 @@
           },
           "requestParameters" : {
             "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/v1/pagamentos": {
+      "post": {
+        "operationId": "gerarQRCode",
+        "responses": {
+          "200": {
+            "description" : "201 response"
+          },
+          "400": {
+            "description" : "400 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409": {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_autorizador_cognito" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "POST",
+          "uri": "http://${vpc_nlb}:${port_mixfast_pagamento}/v1/pagamentos",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
           },
           "passthroughBehavior" : "when_no_match",
           "connectionType" : "VPC_LINK",
@@ -818,7 +856,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/pedidos",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -857,7 +895,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "POST",
-          "uri": "http://${vpc_nlb}:${port}/v1/pedidos",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos",
           "responses" : {
             "default" : {
               "statusCode" : "201"
@@ -909,7 +947,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/pedidos/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -970,7 +1008,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port}/v1/pedidos/{id}/preparamento",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/{id}/preparamento",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1031,7 +1069,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port}/v1/pedidos/{id}/finalizado",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/{id}/finalizado",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1092,7 +1130,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port}/v1/pedidos/{id}/entrega",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/{id}/entrega",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1153,7 +1191,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port}/v1/pedidos/{id}/cancelamento",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/{id}/cancelamento",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1208,7 +1246,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/pedidos/{id}/pagamento",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/{id}/pagamento",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1252,7 +1290,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/pedidos/status",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/status",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1294,7 +1332,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/produtos",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/produtos",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1334,7 +1372,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "POST",
-          "uri": "http://${vpc_nlb}:${port}/v1/produtos",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/produtos",
           "responses" : {
             "default" : {
               "statusCode" : "201"
@@ -1386,7 +1424,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/produtos/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/produtos/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1439,7 +1477,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port}/v1/produtos/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/produtos/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1492,7 +1530,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "DELETE",
-          "uri": "http://${vpc_nlb}:${port}/v1/produtos/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/produtos/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "204"
@@ -1547,7 +1585,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "GET",
-          "uri": "http://${vpc_nlb}:${port}/v1/produtos/categoria/{id}",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/produtos/categoria/{id}",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1585,7 +1623,7 @@
         "x-amazon-apigateway-integration" : {
           "connectionId": "${vpc_link}",
           "httpMethod" : "POST",
-          "uri": "http://${vpc_nlb}:${port}/v1/webhooks",
+          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/webhooks",
           "responses" : {
             "default" : {
               "statusCode" : "200"
@@ -1685,6 +1723,21 @@
           "type": "string"
         },
         "descricao": {
+          "type": "string"
+        }
+      }
+    },
+    "PagamentoHttp": {
+      "required": [
+        "pedido",
+        "valor_total"
+      ],
+      "type": "object",
+      "properties": {
+        "pedido": {
+          "type": "string"
+        },
+        "valor_total": {
           "type": "string"
         }
       }
