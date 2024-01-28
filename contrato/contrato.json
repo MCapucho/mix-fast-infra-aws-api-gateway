@@ -792,6 +792,7 @@
     "/v1/pagamentos": {
       "post": {
         "operationId": "gerarQRCode",
+        "produces" : [ "application/json" ],
         "responses": {
           "200": {
             "description" : "200 response"
@@ -1738,7 +1739,7 @@
           "type": "string"
         },
         "valor_total": {
-          "type": "string"
+          "type": "number"
         }
       }
     },
