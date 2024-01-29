@@ -1303,7 +1303,7 @@
         }
       }
     },
-    "/v1/producoes/pedidos/{codigo}/preparamento": {
+    "/v1/producoes/pedido/{codigo}/preparamento": {
       "put": {
         "operationId": "preparar",
         "parameters": [
@@ -1364,7 +1364,7 @@
         }
       }
     },
-    "/v1/producoes/pedidos/{codigo}/finalizado": {
+    "/v1/producoes/pedido/{codigo}/finalizado": {
       "put": {
         "operationId": "finalizar",
         "parameters": [
@@ -1425,7 +1425,7 @@
         }
       }
     },
-    "/v1/producoes/pedidos/{codigo}/entrega": {
+    "/v1/producoes/pedido/{codigo}/entrega": {
       "put": {
         "operationId": "entregar",
         "parameters": [
@@ -1486,7 +1486,7 @@
         }
       }
     },
-    "/v1/producoes/pedidos/{codigo}/cancelamento": {
+    "/v1/producoes/pedido/{codigo}/cancelamento": {
       "put": {
         "operationId": "cancelar",
         "parameters": [
