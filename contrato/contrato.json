@@ -963,250 +963,6 @@
         }
       }
     },
-    "/v1/pedidos/{codigo}/preparamento": {
-      "put": {
-        "operationId": "preparar",
-        "parameters": [
-          {
-            "name": "codigo",
-            "in": "path",
-            "description": "Código do Pedido",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204" : {
-            "description" : "204 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "400" : {
-            "description" : "400 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "404" : {
-            "description" : "404 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "409" : {
-            "description" : "409 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "security" : [ {
-          "mixfast_autorizador_cognito" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "connectionId": "${vpc_link}",
-          "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/{id}/preparamento",
-          "responses" : {
-            "default" : {
-              "statusCode" : "200"
-            }
-          },
-          "requestParameters" : {
-            "integration.request.path.id" : "method.request.path.codigo"
-          },
-          "passthroughBehavior" : "when_no_match",
-          "connectionType" : "VPC_LINK",
-          "type" : "http_proxy"
-        }
-      }
-    },
-    "/v1/pedidos/{codigo}/finalizado": {
-      "put": {
-        "operationId": "finalizar",
-        "parameters": [
-          {
-            "name": "codigo",
-            "in": "path",
-            "description": "Código do Pedido",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204" : {
-            "description" : "204 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "400" : {
-            "description" : "400 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "404" : {
-            "description" : "404 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "409" : {
-            "description" : "409 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "security" : [ {
-          "mixfast_autorizador_cognito" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "connectionId": "${vpc_link}",
-          "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/{id}/finalizado",
-          "responses" : {
-            "default" : {
-              "statusCode" : "200"
-            }
-          },
-          "requestParameters" : {
-            "integration.request.path.id" : "method.request.path.codigo"
-          },
-          "passthroughBehavior" : "when_no_match",
-          "connectionType" : "VPC_LINK",
-          "type" : "http_proxy"
-        }
-      }
-    },
-    "/v1/pedidos/{codigo}/entrega": {
-      "put": {
-        "operationId": "entregar",
-        "parameters": [
-          {
-            "name": "codigo",
-            "in": "path",
-            "description": "Código do Pedido",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204" : {
-            "description" : "204 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "400" : {
-            "description" : "400 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "404" : {
-            "description" : "404 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "409" : {
-            "description" : "409 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "security" : [ {
-          "mixfast_autorizador_cognito" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "connectionId": "${vpc_link}",
-          "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/{id}/entrega",
-          "responses" : {
-            "default" : {
-              "statusCode" : "200"
-            }
-          },
-          "requestParameters" : {
-            "integration.request.path.id" : "method.request.path.codigo"
-          },
-          "passthroughBehavior" : "when_no_match",
-          "connectionType" : "VPC_LINK",
-          "type" : "http_proxy"
-        }
-      }
-    },
-    "/v1/pedidos/{codigo}/cancelamento": {
-      "put": {
-        "operationId": "cancelar",
-        "parameters": [
-          {
-            "name": "codigo",
-            "in": "path",
-            "description": "Código do Pedido",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204" : {
-            "description" : "204 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "400" : {
-            "description" : "400 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "404" : {
-            "description" : "404 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          },
-          "409" : {
-            "description" : "409 response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "security" : [ {
-          "mixfast_autorizador_cognito" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "connectionId": "${vpc_link}",
-          "httpMethod" : "PUT",
-          "uri": "http://${vpc_nlb}:${port_mixfast}/v1/pedidos/{id}/cancelamento",
-          "responses" : {
-            "default" : {
-              "statusCode" : "200"
-            }
-          },
-          "requestParameters" : {
-            "integration.request.path.id" : "method.request.path.codigo"
-          },
-          "passthroughBehavior" : "when_no_match",
-          "connectionType" : "VPC_LINK",
-          "type" : "http_proxy"
-        }
-      }
-    },
     "/v1/pedidos/{codigo}/pagamento": {
       "get": {
         "operationId": "buscarPorCodigoStatusPagamento",
@@ -1296,6 +1052,250 @@
             "default" : {
               "statusCode" : "200"
             }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/v1/producoes/pedidos/{codigo}/preparamento": {
+      "put": {
+        "operationId": "preparar",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código do Pedido",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "400" : {
+            "description" : "400 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_autorizador_cognito" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "PUT",
+          "uri": "http://${vpc_nlb}:${port_mixfast_producao}/v1/producoes/pedido/{id}/preparamento",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/v1/producoes/pedidos/{codigo}/finalizado": {
+      "put": {
+        "operationId": "finalizar",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código do Pedido",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "400" : {
+            "description" : "400 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_autorizador_cognito" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "PUT",
+          "uri": "http://${vpc_nlb}:${port_mixfast_producao}/v1/producoes/pedido/{id}/finalizado",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/v1/producoes/pedidos/{codigo}/entrega": {
+      "put": {
+        "operationId": "entregar",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código do Pedido",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "400" : {
+            "description" : "400 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_autorizador_cognito" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "PUT",
+          "uri": "http://${vpc_nlb}:${port_mixfast_producao}/v1/producoes/pedido/{id}/entrega",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
+    "/v1/producoes/pedidos/{codigo}/cancelamento": {
+      "put": {
+        "operationId": "cancelar",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Código do Pedido",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204" : {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "400" : {
+            "description" : "400 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "404" : {
+            "description" : "404 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409" : {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_autorizador_cognito" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "PUT",
+          "uri": "http://${vpc_nlb}:${port_mixfast_producao}/v1/producoes/pedido/{id}/cancelamento",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "requestParameters" : {
+            "integration.request.path.id" : "method.request.path.codigo"
           },
           "passthroughBehavior" : "when_no_match",
           "connectionType" : "VPC_LINK",
