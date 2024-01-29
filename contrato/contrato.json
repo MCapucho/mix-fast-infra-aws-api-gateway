@@ -1547,6 +1547,47 @@
         }
       }
     },
+    "/v1/producoes/pedidos/status": {
+      "get": {
+        "operationId": "buscarPorStatus",
+        "responses": {
+          "200": {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/PedidoHttp"
+            }
+          },
+          "204": {
+            "description" : "204 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "409": {
+            "description" : "409 response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "mixfast_autorizador_cognito" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "connectionId": "${vpc_link}",
+          "httpMethod" : "GET",
+          "uri": "http://${vpc_nlb}:${port_mixfast_producao}/v1/producoes/pedidos/status",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "passthroughBehavior" : "when_no_match",
+          "connectionType" : "VPC_LINK",
+          "type" : "http_proxy"
+        }
+      }
+    },
     "/v1/produtos" : {
       "get" : {
         "operationId" : "buscarTodos",
