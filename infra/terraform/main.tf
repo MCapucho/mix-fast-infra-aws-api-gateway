@@ -20,7 +20,7 @@ resource "aws_api_gateway_resource" "mixfast_api_gateway_resource" {
 resource "aws_api_gateway_authorizer" "mixfast_api_gateway_authorizer" {
   name                   = "${var.name}_authorizer_proxy"
   rest_api_id            = aws_api_gateway_rest_api.mixfast_api_gateway.id
-  authorizer_uri         = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:022874923015:function:mixfast_lambda_authorizer/invocations"
+  authorizer_uri         = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:211125470560:function:mixfast_lambda_authorizer/invocations"
   authorizer_credentials = aws_iam_role.api_gateway_lambda_role.arn
   type                   = "TOKEN"
 }
@@ -43,12 +43,12 @@ resource "aws_api_gateway_integration" "mixfast_api_gateway_integration_vpc_link
   http_method = aws_api_gateway_method.mixfast_api_gateway_method.http_method
 
   type                    = "HTTP_PROXY"
-  uri                     = "http://mixfast-nlb-ad1e0c8436c96791.elb.us-east-1.amazonaws.com:9080/{id}"
+  uri                     = "http://mixfast-nlb-5e871bfe76b588c6.elb.us-east-1.amazonaws.com:9080/{id}"
   integration_http_method = "ANY"
   passthrough_behavior    = "WHEN_NO_MATCH"
 
   connection_type = "VPC_LINK"
-  connection_id   = "gglmop"
+  connection_id   = "fegwar"
 
   request_parameters = {
     "integration.request.path.id" = "method.request.path.proxy"

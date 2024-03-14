@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "mixfast-s3-bucket-api-gateway"
+    bucket = "fiap-mixfast-s3-bucket-api-gateway"
     key    = "mixfast-infrastructure"
     region = "us-east-1"
   }
